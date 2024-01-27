@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs19P63P8avYTvgtBzckpeI1CGkc5earE&callback=myMap"
+	async
+	defer></script>
+<div class="about-box">
+	<h3>About Us</h3>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Scelerisque fermentum
+		dui faucibus in. Orci a scelerisque purus semper eget duis at tellus. Odio
+		tempor orci dapibus ultrices in iaculis nunc sed. Quam viverra orci sagittis
+		eu. Viverra orci sagittis eu volutpat odio facilisis mauris sit. Quis
+		hendrerit dolor magna eget est lorem ipsum dolor. Pretium nibh ipsum
+		consequat nisl vel pretium lectus quam id. Interdum velit euismod in
+		pellentesque. Dolor sed viverra ipsum nunc aliquet
+	</p>
+</div>
+<div class="location-box">
+	<h3>Our Location</h3>
+	<iframe
+		src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d261508.00616576546!2d-119.58628297856886!3d50.87763257662211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537e51be38a683b7%3A0xa94cb27774a83419!2sShuswap%2C%20BC%20V0E%201M1!5e0!3m2!1sen!2sca!4v1691424027932!5m2!1sen!2sca"
+		width="800"
+		height="550"
+		style="border: 10px solid rgba(0, 136, 169, 1); border-radius: 10px; margin-top: 50px; margin-bottom: 50px;"
+		allowfullscreen=""
+		loading="lazy"
+		referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+{% endblock %}

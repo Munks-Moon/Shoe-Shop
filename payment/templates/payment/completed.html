@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="payment-complete-box">
+	<h1>Success!</h1>
+	<img src="{% static 'img/checkmark.png' %}" style="height: 100px;" />
+	<p>
+		Your payment has been processed successfully. Thank you for your purchase!
+	</p>
+</div>
+{% endblock %}

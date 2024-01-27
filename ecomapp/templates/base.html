@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Shoe</title>
+		<link rel="stylesheet" href="{% static 'css/base.css' %}" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+			rel="stylesheet" />
+	</head>
+	<body>
+		<div class="main-text">
+			<div class="nav-bar">
+				<header>
+					<div class="header-title">
+						<img
+							src="{% static 'img/shoe-logo-removebg.png' %}"
+							alt="logo"
+							id="logo" />
+						<h1>SHUSWAP SHOE SHOP</h1>
+					</div>
+					<div class="header-links">
+						<nav>
+							<ul class="nav-links">
+								<li><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'about' %}">About</a></li>
+								{% with total_items=cart|length %} {% if total_items > 0 %}
+								<li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
+								{% endif %} {% endwith %}
+							</ul>
+						</nav>
+						<a class="cta" href="{% url 'contact' %}"
+							><button>Contact</button></a
+						>
+					</div>
+				</header>
+			</div>
+			<div class="cart-items">
+				{% with total_items=cart|length %} {% if total_items > 0 %}
+				<p>Your cart:</p>
+				<a href="{% url 'cart:cart_detail' %}">
+					{{ total_items }} item{{ total_items|pluralize }} : ${{cart.total_price }}
+				</a>
+				{% else %} Your cart is empty. {% endif %} {% endwith %}
+			</div>
+
+			{% block content %} {% endblock %}
+		</div>
+		<div class="footer-container">
+			<footer class="footer">
+				<div class="social-icons">
+					<a href="#" class="icon"
+						><img src="{% static 'img/icon-facebook.png' %}" alt="Facebook"
+					/></a>
+					<a href="#" class="icon"
+						><img src="{% static 'img/icon-twitterx.png' %}" alt="Twitter"
+					/></a>
+					<a href="#" class="icon"
+						><img src="{% static 'img/icon-instagram.png' %}" alt="Instagram"
+					/></a>
+				</div>
+				<div>
+					<p>Copyright © 2023 Designed by Munks</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

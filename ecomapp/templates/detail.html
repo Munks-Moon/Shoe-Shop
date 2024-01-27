@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="product-body">
+	<div class="product-box">
+		<div class="product-image">
+			<img src="{{ product.image.url }}" alt="{{ product.name }}" />
+		</div>
+		<div class="product-text">
+			<div class="product-info">
+				<h4>{{ product.name }}</h4>
+				<h5>{{ product.description }}</h5>
+				{% if product.available == True %}
+				<p style="color: green">In Stock</p>
+				{% else %}
+				<p style="color: red">None in Stock</p>
+				{% endif %}
+				<p>${{ product.price }}</p>
+				<form action="{% url 'cart:cart_add' product.id %}" method="post">
+					{{ cart_add_form }} {% csrf_token %}
+					<input class="form-btn" type="submit" value="Add to cart" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

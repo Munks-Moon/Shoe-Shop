@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<h3 style="text-align: center">Contact Us</h3>
+<div class="contact-body">
+	<div class="contact-box">
+		<h3>By Phone</h3>
+		<div>
+			<img
+				src="{% static 'img/phone-icon.png' %}"
+				style="height: 130px; margin-top: 20px" />
+		</div>
+        <br>
+        <h5>INTERNATIONAL</h5>
+        <h4>1-999-123-4567</h4>
+	</div>
+	<div class="contact-box">
+		<h3>By email</h3>
+		<div>
+			<img
+				src="{% static 'img/email-icon.png' %}"
+				style="height: 100px; margin-top: 40px" />
+		</div>
+        <br>
+        <h5>EMAIL ADDRESS</h5>
+        <h4>shuswapshoeshop@footwear.com</h4>
+	</div>
+</div>
+{% endblock %}

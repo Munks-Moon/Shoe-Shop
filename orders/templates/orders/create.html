@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<div class="order-box">
+	<h1>Checkout</h1>
+	<div class="order-content-box">
+		<div class="order-info">
+			<ul style="list-style-type: none">
+				{% for item in cart %}
+				<li style="display: flex; align-items: center;">
+					<img
+						class="checkout-image"
+						style="height: 200px"
+						src="{{item.product.image.url}}" />
+					<div class="checkout-details">
+						{{item.quantity}}x {{item.product.name}}
+						<p>${{item.total_price}}</p>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+			<p style="text-align: center;">Total: ${{cart.total_price}}</p>
+		</div>
+	</div>
+	<div class="order-form-box">
+		<form method="post" class="order-form">
+			{% for field in form %}
+			<div class="equal-width-fields">{{ field.label_tag }} {{ field }}</div>
+			{% endfor %}
+			<p><input class="btn" type="submit" value="Place Order" /></p>
+			{% csrf_token %}
+		</form>
+	</div>
+</div>
+{% endblock %}

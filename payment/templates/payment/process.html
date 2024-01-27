@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %}
+{% block content %}
+<div class="payment-box">
+	<h1>Order summary</h1>
+	<table class="payment-info">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Product</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in order.items.all %}
+			<tr>
+				<td>
+					<img
+						src="{% if item.product.image %}{{ item.product.image.url }}
+{% else %}{% static 'img/no_image.png' %}{% endif %}" style="height: 100px;" />
+				</td>
+				<td>{{ item.product.name }}</td>
+				<td class="num">${{ item.price }}</td>
+				<td class="num">{{ item.quantity }}</td>
+				<td class="num">${{ item.get_cost }}</td>
+			</tr>
+			{% endfor %}
+			<tr style="height: 100px;"></tr>
+			<tr class="total">
+				<td colspan="3"></td>
+				<td><strong>Total</strong></td>
+				<td class="num">${{ order.total_cost }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<form style="text-align: right;" action="{% url 'payment:process' %}" method="post">
+		<input class="btn" type="submit" value="Pay now" />
+		{% csrf_token %}
+	</form>
+	{% endblock %}
+</div>

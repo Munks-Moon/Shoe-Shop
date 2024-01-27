@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="home-cover">
+	<div class="home-cover-text">
+		<h3>
+			New Collection
+		</h3>
+		<hr class="hr" />
+		<h2>STYLISH FOOTWEAR</h2>
+		<p>These shoes are definitely real and not generated via AI technology</p>
+		<a class="cta" href="#product-body"><button>Shop now</button></a>
+	</div>
+	<div class="home-image-main"><img src="{% static 'img/orange-shoe.png' %}" /></div>
+</div>
+<div class="product-body" id="product-body">
+	{% for p in product %}
+	<div class="product-box">
+		<div class="product-image">
+			<img src="{{ p.image.url }}" alt="{{ p.name }}" style="height: 400px;" />
+		</div>
+		<div class="product-text">
+			<div class="product-info">
+				<h4>{{ p.name }}</h4>
+				<h5>{{ p.description }}</h5>
+				<p>${{ p.price }}</p>
+                <a class="cta" href="{% url 'detail' p.slug %}"><button>View Item</button></a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
